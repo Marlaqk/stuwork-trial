@@ -2,7 +2,8 @@
 on: push
 name: Build Angular
 jobs:
-  build:
+  test:
+    name: test
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -28,6 +29,7 @@ jobs:
           npm test
 
   firebase-deploy:
+    needs: test
 
     runs-on: ubuntu-latest
 
@@ -36,7 +38,6 @@ jobs:
     - uses: actions/setup-node@master
       with:
         node-version: '12.x'
-    - run: npm install
     - run: npm run build:prod
     - uses: w9jds/firebase-action@master
       with:
