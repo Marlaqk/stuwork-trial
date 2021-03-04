@@ -27,6 +27,12 @@ jobs:
         run: |
           npm i
           npm test
+      - name: Archive build
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: deploy_dist
+          path: dist
 
   firebase-deploy:
     needs: test
@@ -34,13 +40,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@master
-    - uses: actions/setup-node@master
+    - name: Checkout
+        uses: actions/checkout@v1
+    - name: Download build
+      uses: actions/download-artifact@v1
       with:
-        node-version: '12.x'
-    - run: |
-          npm i
-          npm run build:prod
+        name: deploy_dist
+    - name: Deploy to Firebase
     - uses: w9jds/firebase-action@master
       with:
         args: deploy --only hosting
