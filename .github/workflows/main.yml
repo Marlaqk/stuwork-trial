@@ -27,6 +27,7 @@ jobs:
         run: |
           npm i
           npm test
+          npm build:prod
       - name: Archive build
         if: success()
         uses: actions/upload-artifact@v1
