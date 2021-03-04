@@ -49,5 +49,5 @@ jobs:
       uses: FirebaseExtended/action-hosting-deploy@v0
       with:
         args: deploy --only hosting
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_STUWORK_TRIAL }}
+        firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_STUWORK_TRIAL }}
         projectId: stuwork-trial
