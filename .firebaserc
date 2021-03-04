@@ -1,5 +1,6 @@
 {
-    "projects": {
-        "prod": "stuwork-trial"
-    }
+  "projects": {
+    "prod": "stuwork-trial",
+    "default": "stuwork-trial"
+  }
 }
