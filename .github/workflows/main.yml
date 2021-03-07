@@ -45,6 +45,8 @@ jobs:
       uses: actions/download-artifact@v1
       with:
         name: deploy_dist
+    - name: check dir
+      run: ls -la 
     - name: Deploy to Firebase
       uses: FirebaseExtended/action-hosting-deploy@v0
       with:
