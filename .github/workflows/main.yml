@@ -32,7 +32,7 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v1
         with:
-          name: deploy_dist
+          name: dist
           path: dist
 
   firebase-deploy:
@@ -44,7 +44,7 @@ jobs:
     - name: Download build
       uses: actions/download-artifact@v1
       with:
-        name: deploy_dist
+        name: dist
     - name: check dir
       run: ls -la 
     - name: Deploy to Firebase
