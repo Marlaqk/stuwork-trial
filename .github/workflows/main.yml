@@ -16,10 +16,8 @@ jobs:
         uses: actions/cache@v1
         id: cache
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          path: node_modules
+          key: node-modules-${{ hashFiles('package-lock.json') }}
       - name: Node ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
